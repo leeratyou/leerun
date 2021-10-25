@@ -18,7 +18,7 @@ const StyledPage = styled.div`
 `
 
 interface Props {
-
+  id?: any
 }
 
 const Page: FC<Props> = props => <StyledPage {...props} />

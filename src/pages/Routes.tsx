@@ -17,9 +17,7 @@ export const Path = {
   Help: '/help',
   Auth: '/auth',
   Login: '/auth/login',
-  Profile: '/profile',
-  Projects: '/projects',
-  Project: '/project/:id'
+  Plan: '/plan'
 } as const
 
 const ProtectedRoute: FC<RouteProps> = observer(({ ...props }) => {

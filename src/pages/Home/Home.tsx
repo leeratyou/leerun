@@ -3,17 +3,15 @@ import styled from 'styled-components'
 import { Switch, Route, Redirect } from 'react-router'
 
 import { Path } from 'pages/Routes'
+import Plan from './Plan'
 
 interface Props {}
 
 const Home: FC<Props> = () => {
   return (
     <Switch>
-      Home
-      {/*<Route path={Path.Projects} component={Projects} />*/}
-      {/*<Route path={Path.Profile} component={Profile} />*/}
-      {/*<Route path={Path.Project} component={Project} />*/}
-      {/*<Redirect to={Path.Projects} />*/}
+      <Route path={Path.Plan} component={Plan} />
+      <Redirect to={Path.Plan} />
     </Switch>
   )
 }

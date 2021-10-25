@@ -27,7 +27,7 @@ const len = withError(isLengthGreater(7), 'length_must')
 
 const Login: FC<Props> = () => {
   
-  const { t, i18n } = useTranslation('auth')
+  const { t } = useTranslation('auth')
   const { userStore: { login }} = useStore()
   
   const phone = useInput({
@@ -47,7 +47,7 @@ const Login: FC<Props> = () => {
   
   const tryLogin = () => {
     if (!inputsHasError(phone, password)) {
-      login(phone.value, password.value, i18n.language)
+      login(phone.value, password.value)
     }
   }
   

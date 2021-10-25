@@ -2,19 +2,14 @@ import { makeAutoObservable, reaction } from 'mobx'
 import { makePersistable } from 'mobx-persist-store'
 import localforage from 'localforage'
 
-import { initializeApp } from 'firebase/app'
-
 import Api from 'services/api'
 import snackbarStore, { SnackbarType } from './snackbar'
 
+import plansStore from './plans'
+
 export interface User {
   id: string
-  attributes: {
-    name: string
-    email: string
-    phone: string
-    projectsCount: number
-  }
+  name: string
 }
 
 class UserStore {
@@ -32,18 +27,21 @@ class UserStore {
       token => Api.setAuthToken(token),
       { fireImmediately: true }
     )
+    
+    reaction(
+      () => this.isAuth,
+      isAuth => isAuth && plansStore.fetchPlans(),
+      { fireImmediately: true }
+    )
   }
   
   user: User | null = null
   
-  authToken = null
+  authToken: string | null = null
   
   get isAuth() {
-    return !!this.authToken
-  }
-  
-  get isAdmin() {
-    return false
+    return true
+    // return !!this.authToken
   }
   
   get userId() {
@@ -56,8 +54,8 @@ class UserStore {
     this.authToken = null
   }
   
-  login = async (phone: string, password: string, locale: string) => {
-    const data = { phone, password, locale }
+  login = async (phone: string, password: string) => {
+    const data = { phone, password }
     const response = await Api.login(data)
     if (response.success) {
       this.authToken = response.data.authToken

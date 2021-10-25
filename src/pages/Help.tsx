@@ -1,25 +1,24 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import { Paper, Container } from '@material-ui/core'
+import { Text, Paper, Page } from 'ui'
 
-import { Text } from 'ui'
+const StyledContainer = styled.div`
+  margin-top: calc(var(--appbar-height) / 2);
+  padding: 0 8rem;
+`
 
 interface Props {}
 
-const Wrap = styled.div`
-  padding: 1rem;
-`
-
 const Help: FC<Props> = () => {
   return (
-    <Container>
-      <Paper>
-        <Wrap>
-          <Text paragraph>Help</Text>
-        </Wrap>
-      </Paper>
-    </Container>
+    <Page>
+      <StyledContainer>
+        <Paper>
+          <Text>Help</Text>
+        </Paper>
+      </StyledContainer>
+    </Page>
   )
 }
 

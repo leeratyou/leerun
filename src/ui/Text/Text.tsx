@@ -27,7 +27,7 @@ const defaultCss = css`
   word-break: normal;
   color: ${p => (p.color ? p.color : p.theme.color.text)};
   ${props => props.withIcon && 'display: flex; align-items: center;'};
-  text-align: start;
+  text-align: ${p => p.align || 'start'};
   @media screen and (min-width: 650px) and (max-width: 1500px) {
     flex-direction: column;
   }
@@ -128,6 +128,7 @@ interface Props {
   thin?: boolean
   bold?: boolean
   paragraph?: boolean
+  align?: 'left' | 'center' | 'right'
 }
 
 const Text: FC<Props> = ({ v, ...props }) => <TextFactory {...props}  variant={v} />

@@ -19,6 +19,7 @@ const theme = {
     background: 'rgba(246, 247, 250, 1)',
     darkBackground: 'rgba(37, 34, 74, 0.3)',
     notActiveWhite: '#8d8d8d',
+    lightGrey: '#e0e0e0',
     darkBlue: 'rgba(37, 34, 74, 1)',
     blue: '#3E50F7',
     red: '#F23D5D',

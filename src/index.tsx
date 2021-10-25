@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from 'core/App'
 import reportWebVitals from './reportWebVitals'
+
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
 

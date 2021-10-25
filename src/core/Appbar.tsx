@@ -4,11 +4,9 @@ import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
 import { NavLink, Link } from 'react-router-dom'
 
-import { Row, Space, theme, Button } from 'ui'
+import { Row, Space, theme } from 'ui'
 import { Path } from 'pages/Routes'
 import { useStore } from 'store'
-
-import { ReactComponent as Logo } from 'assets/logo.svg'
 
 interface Props {
 
@@ -46,6 +44,10 @@ const Avatar = styled.div`
   align-items: center;
 `
 
+const White = styled(Link)`
+  color: white;
+`
+
 const Appbar: FC<Props> = () => {
   
   const { t } = useTranslation('appbar')
@@ -53,11 +55,12 @@ const Appbar: FC<Props> = () => {
   
   return (
     <AppbarWrap justify='start'>
-      <Link to={Path.Home}>Logo</Link>
+      <White to={Path.Home}>Logo</White>
       <Space grow />
+      <SLink to={Path.Plan}>{t`plan`}</SLink>
       <SLink to={Path.Help}>{t`help`}</SLink>
       {isAuth
-        ? <SLink to={Path.Profile}><Avatar>{user?.attributes.name.charAt(0).toUpperCase()}</Avatar></SLink>
+        ? <SLink to={'/profile'}><Avatar>{user?.name.charAt(0).toUpperCase()}</Avatar></SLink>
         : <SLink to={Path.Auth}>{t`signIn`}</SLink>}
     </AppbarWrap>
   )
